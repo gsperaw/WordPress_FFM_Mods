@@ -144,10 +144,6 @@ class FrontFileManager
 
             );
 
-
-
-
-
     /**
 
      * Constructor
@@ -446,10 +442,6 @@ class FrontFileManager
 
                     $file_list .= FFM_DESTINATION_URL . $filename . "\n";
 
-
-
-                      
-
                       $file_location = FFM_DESTINATION_DIR . $filename;
 
                       $wp_filetype = wp_check_filetype(basename($filename), null );
@@ -487,56 +479,48 @@ class FrontFileManager
                             update_post_meta( $attach_id, '_downloadable', 1 );                                        
 
                 }
+			
+			/*
+			* Grab the current user's info to place it as the From name and address.
+			*/
+			global $current_user;	
+			get_currentuserinfo();
 
-
-
-            // grab our sender
-
+			/*
+			* Sanitize form fields here...
+			*/
+            // grab our sender - This is being modified so the sender is now the recipient.
             $email      = isset( $_POST['ffm_email'] ) ? mysql_real_escape_string( $_POST['ffm_email'] ) : '';
-
-
-
+			// added the subject field to the form, grab it here.
+			$subject 	= isset( $_POST['ffm_subject'] ) ? mysql_real_escape_string( $_POST['ffm_subject'] ) : '';
             // grab the submitted message
-
             $message    = isset( $_POST['ffm_message'] ) ? mysql_real_escape_string( $_POST['ffm_message'] ) : '';
-
             $message    = stripslashes( $message );
 
-
-
             // let's parse our email template
-
-            $parsed = !empty( $settings['email_template'] ) ? $settings['email_template'] : "New files have been submitted by {@email}. The files submitted were:\n\n{@files}\n\nAdditionally, a message was provided:\n\n==========\n{@message}\n==========";
-
-
+            $parsed = !empty( $settings['email_template'] ) ? $settings['email_template'] : "New files have been submitted by {@from_data}. The files submitted were:\n\n{@files}\n\nAdditionally, a message was provided:\n\n==========\n{@message}\n==========";
 
             // we'll grab our submitter IP
-
-            $ip = $_SERVER['REMOTE_ADDR'];     
-
-
-
+            //$ip = $_SERVER['REMOTE_ADDR'];     
+			
+			$from_data = $current_user->user_firstname .' '. $current_user->user_lastname . ' <' . $current_user->user_email . '>';
+			
             $parsed = str_replace( '{@files}',      $file_list,                             $parsed );
-
-            $parsed = str_replace( '{@email}',      $email,                                 $parsed );
-
+            $parsed = str_replace( '{@from_data}',  $from_data,                             $parsed );
             $parsed = str_replace( '{@message}',    $message,                               $parsed );
-
             $parsed = str_replace( '{@time}',       date( 'F jS, Y' ) . date( 'g:ia' ),     $parsed );
+            //$parsed = str_replace( '{@ip}',         $ip,                                    $parsed );
+			
+			// No need for this, as there is only one recipient.
+            //$recipients     = !empty( $settings['email_recipients'] ) ? $settings['email_recipients'] : get_option( 'admin_email' );
+			
+			/* Commented out because we're setting the subject from the form and not from the settings.*/
+            #$subject        = !empty( $settings['email_subject'] ) ? $settings['email_subject'] : '[' . get_bloginfo( 'name' ) . '] New files uploaded';
 
-            $parsed = str_replace( '{@ip}',         $ip,                                    $parsed );
+            $headers = 'From: ' . $current_user->user_firstname . ' '. $current_user->user_lastname . ' <' . $current_user->user_email . '> ' . "\r\n";
 
-
-
-            $recipients     = !empty( $settings['email_recipients'] ) ? $settings['email_recipients'] : get_option( 'admin_email' );
-
-            $subject        = !empty( $settings['email_subject'] ) ? $settings['email_subject'] : '[' . get_bloginfo( 'name' ) . '] New files uploaded';
-
-
-
-            $headers = 'From: ' . get_bloginfo( 'name' ) . ' <' . get_option( 'admin_email' ) . '>' . "\r\n";
-
-            wp_mail( $recipients, $subject, $parsed, $headers );
+			wp_mail( $email, $subject, $parsed, $headers );
+            //wp_mail( $recipients, $subject, $parsed, $headers );
 
 
 
@@ -642,24 +626,17 @@ class FrontFileManager
 
                     'echo' => 0
 
-                    );                                
+                    );        
 
-                // Email
-
+                // Email Form
                 $output     .= '<div class="front-file-manager-category-email">';
-
                 $output     .= 'Media Category: ' . wp_dropdown_categories( $args ) . ' ';
-
+				$output     .= '<p><label for="ffm_email">' . __( 'Recipient Email Address', 'frontfilemanager' ) . '</label><input type="text" name="ffm_email" class="required_email" id="ffm_email" value="" />';
+				$output     .= '<p><label for="ffm_subject">' . __( 'Email Subject', 'frontfilemanager' ) . '</label><input type="text" name="ffm_subject" id="ffm_subject" value="" />';
                 $output     .= '<div class="front-file-manager-message">';
-
                 $output     .= '<label for="ffm_message">' . __( 'Message', 'frontfilemanager' ) . '</label>';
-
                 $output     .= '<textarea name="ffm_message" class="ffm_message"></textarea>';
-
                 $output     .= '</div>';
-
-                $output     .= '<p><label for="ffm_email">' . __( 'Your Email Address', 'frontfilemanager' ) . '</label><input type="text" name="ffm_email" class="required_email" id="ffm_email" value="" />';
-
                 $output     .= '</div></p>';
 
 
