@@ -1,0 +1,206 @@
+# Copyright (C) 2012 Front File Manager
+# This file is distributed under the same license as the Front File Manager package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Front File Manager 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/front-file-manager\n"
+"POT-Creation-Date: 2012-01-24 03:42:24+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes.php:10
+msgid "Media Categories"
+msgstr ""
+
+#: includes.php:11 includes.php:20
+msgid "Media Category"
+msgstr ""
+
+#: includes.php:12
+msgid "Search Media Categories"
+msgstr ""
+
+#: includes.php:13
+msgid "All Media Categories"
+msgstr ""
+
+#: includes.php:14
+msgid "Parent Media Category"
+msgstr ""
+
+#: includes.php:15
+msgid "Parent Media Category:"
+msgstr ""
+
+#: includes.php:16
+msgid "Edit Media Category"
+msgstr ""
+
+#: includes.php:17
+msgid "Update Media Category"
+msgstr ""
+
+#: includes.php:18
+msgid "Add New Media Category"
+msgstr ""
+
+#: includes.php:19
+msgid "New Media Category Name"
+msgstr ""
+
+#: includes.php:64
+msgid ""
+"<div id=\"category-notice\">You are currently displaying the files from <b>%"
+"s</b> category. <a href=\"%s\">All Categories</a></div>"
+msgstr ""
+
+#: includes.php:72
+msgid "Title"
+msgstr ""
+
+#: includes.php:73
+msgid "Category"
+msgstr ""
+
+#: includes.php:74
+msgid "Link"
+msgstr ""
+
+#: includes.php:96
+msgid "Download"
+msgstr ""
+
+#: includes.php:268
+msgid "%s is not registerd."
+msgstr ""
+
+#: includes.php:273
+msgid "Downloadable"
+msgstr ""
+
+#: includes.php:356
+msgid "No %s"
+msgstr ""
+
+#: includes.php:413
+msgid "View all %s"
+msgstr ""
+
+#: front-file-manager.php:139
+msgid ""
+"Front File Manager requires WordPress 3.2 or higher, it has been "
+"automatically deactivated."
+msgstr ""
+
+#: front-file-manager.php:153
+msgid ""
+"Error: Unable to create upload storage directory. Please verify write "
+"permissions to the designated WordPress uploads directory. Front File "
+"Manager has been deactivated."
+msgstr ""
+
+#: front-file-manager.php:301
+msgid "Invalid passcode"
+msgstr ""
+
+#: front-file-manager.php:304
+msgid "Passcode"
+msgstr ""
+
+#: front-file-manager.php:313
+msgid ""
+"You browser does not have Flash, Silverlight, Gears, BrowserPlus or HTML5 "
+"support; upload is not available."
+msgstr ""
+
+#: front-file-manager.php:320
+msgid "Select Category"
+msgstr ""
+
+#: front-file-manager.php:326
+msgid "Your Email Address"
+msgstr ""
+
+#: front-file-manager.php:332
+msgid "Message"
+msgstr ""
+
+#: front-file-manager.php:340
+msgid "Submit"
+msgstr ""
+
+#: front-file-manager.php:465
+msgid ""
+"An email is sent each time a Front File Manager is submitted. You can "
+"customize the recipients, the email itself, and other options here."
+msgstr ""
+
+#: front-file-manager.php:564
+msgid "Tags Available"
+msgstr ""
+
+#: front-file-manager.php:569
+msgid "Tag"
+msgstr ""
+
+#: front-file-manager.php:570
+msgid "Output"
+msgstr ""
+
+#: front-file-manager.php:576
+msgid "List of files uploaded"
+msgstr ""
+
+#: front-file-manager.php:580
+msgid "Email address of submitter"
+msgstr ""
+
+#: front-file-manager.php:584
+msgid "Message from submitter"
+msgstr ""
+
+#: front-file-manager.php:588
+msgid "The time the email is sent"
+msgstr ""
+
+#: front-file-manager.php:592
+msgid "The submitters IP address"
+msgstr ""
+
+#: front-file-manager.php:596
+msgid "Current page URL"
+msgstr ""
+
+#: front-file-manager.php:805
+msgid "You must enter a valid email address."
+msgstr ""
+
+#: front-file-manager.php:824
+msgid "You must queue at least one file."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Front File Manager"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.webikon.sk/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allow your visitors to upload files from front-end. You can list these files "
+"on any page using shortcode."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ján Bočínec"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://johnnypea.wp.sk/"
+msgstr ""
